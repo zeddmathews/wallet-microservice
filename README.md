@@ -1,67 +1,65 @@
-Wallet Microservice
+💸 Wallet Microservice
 
-This project is a backend microservice designed to simulate a basic cryptocurrency wallet system. It enables users to create wallets, deposit and withdraw funds, and view transaction history. The service is built using idiomatic Go, gRPC, PostgreSQL, and Docker. It's designed to reflect real-world backend engineering practices as used in fintech and crypto companies like Luno.
+A backend microservice for simulating basic cryptocurrency wallet functionality using Go, gRPC, PostgreSQL, and Docker.
 
-Features
+📌 Features
 
-Create wallets tied to a user ID
+🏦 Create wallets tied to user IDs
 
-Deposit and withdraw funds with safety checks
+💰 Deposit and withdraw funds with transactional safety
 
-Query current wallet balances
+📊 Query wallet balances
 
-List transaction history per wallet
+📜 View transaction history
 
-Transactional data integrity
+🔒 ACID-compliant operations
 
-Fully containerized with Docker
+🐳 Fully containerized with Docker
 
-Clean and idiomatic Go project structure
+🧹 Idiomatic Go structure
 
-Easily extensible for streaming, caching, and authentication
+🔧 Easily extensible (caching, streaming, auth)
 
-Technologies Used
+🛠️ Technologies Used
 
 Go 1.24+
 
-gRPC for service communication
+gRPC for fast communication
+
+Protocol Buffers for typed contracts
 
 PostgreSQL for persistent storage
 
-Docker + Docker Compose
+Docker & Docker Compose for containerized setup
 
-Protocol Buffers for service contracts
-
-Project Structure
+📁 Project Structure
 
 .
-├── cmd/                    # Entrypoints for services (server)
+├── cmd/                    # Entrypoints (e.g., gRPC server)
 │   └── server/
 │       ├── Dockerfile
 │       └── main.go
 ├── internal/              # Application logic
-│   ├── server/            # gRPC server logic & DB connection
+│   ├── server/            # gRPC server logic & DB
 │   ├── models/            # Domain models
-│   └── test/              # Unit and integration tests
-├── proto/                 # .proto definitions and generated code
-├── docker/                # DB init scripts
-├── docker-compose.yml     # Service orchestration
-├── go.mod / go.sum        # Go module files
+│   └── test/              # Unit & integration tests
+├── proto/                 # .proto files + generated gRPC code
+├── docker/                # DB init scripts (SQL)
+├── docker-compose.yml     # Multi-container setup
+├── go.mod / go.sum        # Go dependencies
 └── README.md
 
-Usage
+🚀 Usage
 
-Prerequisites
+✅ Prerequisites
 
-Docker and Docker Compose installed
+Docker + Docker Compose
 
-Run the Application
+🔧 Start the App
 
 docker-compose up --build
 
-Proto Compilation
-
-To regenerate gRPC code after editing proto/wallet.proto:
+📦 Generate Proto Files
 
 protoc \
   --go_out=. \
@@ -70,7 +68,7 @@ protoc \
   --go-grpc_opt=paths=source_relative \
   proto/wallet.proto
 
-API Overview
+🔌 gRPC API Overview
 
 RPC
 
@@ -78,26 +76,29 @@ Description
 
 CreateWallet(userId)
 
-Create a new wallet
+Create a wallet for a user
 
 Deposit(walletId, amt)
 
-Add funds to a wallet
+Add funds to the wallet
 
 Withdraw(walletId, amt)
 
-Subtract funds (no overdraft)
+Withdraw funds (safe only)
 
 GetBalance(walletId)
 
-Get current wallet balance
+Check wallet balance
 
 ListTransactions()
 
-Get list of past transactions
+View historical transactions
 
-License
+📄 License
 
 MIT
 
-This project is built for educational purposes to strengthen backend engineering skills for fintech domains. Contributions and feedback are welcome!
+This project is intended for educational use to sharpen real-world backend skills, especially for fintech and crypto environments.
+
+📬 Feedback or contributions? Open a pull request or file an issue!
+
