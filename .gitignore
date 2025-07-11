@@ -18,7 +18,7 @@ coverage.*
 profile.cov
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
+vendor/
 
 # Go workspace file
 go.work
@@ -27,6 +27,25 @@ go.work.sum
 # env file
 .env
 
+# Environment
+*.ENV
+
 # Editor/IDE
 # .idea/
-# .vscode/
+.vscode/
+
+# Docker
+docker/*.tar
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Generated gRPC code (optional if you generate in-place)
+proto/*.pb.go
+proto/*.grpc.pb.go
+
+# Go build artifacts
+*.o
+*.a
+*.tmp
