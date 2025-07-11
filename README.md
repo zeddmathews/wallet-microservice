@@ -1,74 +1,67 @@
-💸 Wallet Microservice
+wallet-microservice
 
-A backend microservice for simulating basic cryptocurrency wallet functionality using Go, gRPC, PostgreSQL, and Docker.
+A scalable, production-style microservice that mimics real-world crypto wallet systems using Go, gRPC, PostgreSQL, and Docker.
 
-📌 Features
+Wallet Microservice
 
-🏦 Create wallets tied to user IDs
+This project is a backend microservice designed to simulate a basic cryptocurrency wallet system. It enables users to create wallets, deposit and withdraw funds, and view transaction history. The service is built using idiomatic Go, gRPC, PostgreSQL, and Docker. It's designed to reflect real-world backend engineering practices as used in fintech and crypto companies like Luno.
 
-💰 Deposit and withdraw funds with transactional safety
+Features
 
-📊 Query wallet balances
+Create wallets tied to a user ID
 
-📜 View transaction history
+Deposit and withdraw funds with safety checks
 
-🔒 ACID-compliant operations
+Query current wallet balances
 
-🐳 Fully containerized with Docker
+List transaction history per wallet
 
-🧹 Idiomatic Go structure
+Transactional data integrity
 
-🔧 Easily extensible (caching, streaming, auth)
+Fully containerized with Docker
 
-🛠️ Technologies Used
+Clean and idiomatic Go project structure
+
+Easily extensible for streaming, caching, and authentication
+
+Technologies Used
 
 Go 1.24+
 
-gRPC for fast communication
-
-Protocol Buffers for typed contracts
+gRPC for service communication
 
 PostgreSQL for persistent storage
 
-Docker & Docker Compose for containerized setup
-
-📁 Project Structure
-
-.
-├── cmd/                    # Entrypoints (e.g., gRPC server)
-│   └── server/
-│       ├── Dockerfile
-│       └── main.go
-├── internal/              # Application logic
-│   ├── server/            # gRPC server logic & DB
-│   ├── models/            # Domain models
-│   └── test/              # Unit & integration tests
-├── proto/                 # .proto files + generated gRPC code
-├── docker/                # DB init scripts (SQL)
-├── docker-compose.yml     # Multi-container setup
-├── go.mod / go.sum        # Go dependencies
-└── README.md
-
-🚀 Usage
-
-✅ Prerequisites
-
 Docker + Docker Compose
 
-🔧 Start the App
+Protocol Buffers for service contracts
+
+Project Structure
+
+. ├── cmd/ # Entrypoints for services (server) │ └── server/ │ ├── Dockerfile │ └── main.go ├── internal/ # Application logic │ ├── server/ # gRPC server logic & DB connection │ ├── models/ # Domain models │ └── test/ # Unit and integration tests ├── proto/ # .proto definitions and generated code ├── docker/ # DB init scripts ├── docker-compose.yml # Service orchestration ├── go.mod / go.sum # Go module files └── README.md
+
+Usage
+
+Prerequisites
+
+Docker and Docker Compose installed
+
+Run the Application
 
 docker-compose up --build
 
-📦 Generate Proto Files
+Proto Compilation
 
-protoc \
-  --go_out=. \
-  --go-grpc_out=. \
-  --go_opt=paths=source_relative \
-  --go-grpc_opt=paths=source_relative \
-  proto/wallet.proto
+To regenerate gRPC code after editing proto/wallet.proto:
 
-🔌 gRPC API Overview
+protoc
+--go_out=.
+--go-grpc_out=.
+--go_opt=paths=source_relative
+--go-grpc_opt=paths=source_relative
+proto/wallet.proto
+
+API Overview
 
 RPC
 
@@ -76,29 +69,26 @@ Description
 
 CreateWallet(userId)
 
-Create a wallet for a user
+Create a new wallet
 
 Deposit(walletId, amt)
 
-Add funds to the wallet
+Add funds to a wallet
 
 Withdraw(walletId, amt)
 
-Withdraw funds (safe only)
+Subtract funds (no overdraft)
 
 GetBalance(walletId)
 
-Check wallet balance
+Get current wallet balance
 
 ListTransactions()
 
-View historical transactions
+Get list of past transactions
 
-📄 License
+License
 
 MIT
 
-This project is intended for educational use to sharpen real-world backend skills, especially for fintech and crypto environments.
-
-📬 Feedback or contributions? Open a pull request or file an issue!
-
+This project is built for educational purposes to strengthen backend engineering skills for fintech domains. Contributions and feedback are welcome!
